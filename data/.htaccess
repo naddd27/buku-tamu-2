@@ -1,0 +1,4 @@
+# Blokir akses langsung ke semua isi folder data/ lewat URL browser.
+# Tanpa ini, tamu.json bisa diakses langsung lewat alamat seperti:
+# http://localhost/buku-tamu/data/tamu.json
+Require all denied

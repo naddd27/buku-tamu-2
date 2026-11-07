@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buku Tamu</title>
+  <!-- CDN Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1><i class="bi bi-book"></i> Buku Tamu</h1>
+    <p>Silakan tinggalkan pesan dan kesan Anda</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2 id="form-title">Tulis Pesan</h2>
+      <form id="form-tamu" novalidate>
+        <input type="hidden" id="tamu-id" value="">
+
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" name="nama" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email (opsional)</label>
+          <input type="email" id="email" name="email">
+        </div>
+
+        <div class="form-group">
+          <label for="pesan">Pesan</label>
+          <textarea id="pesan" name="pesan" rows="4" required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-submit">Kirim</button>
+          <button type="button" id="btn-batal" class="btn-secondary" hidden>Batal</button>
+        </div>
+
+        <p id="form-status" class="status-msg" role="status"></p>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Daftar Tamu (<span id="jumlah-tamu">0</span>)</h2>
+
+      <div id="tabel-wrapper">
+        <table id="tabel-tamu">
+          <thead>
+            <tr>
+              <th>Tamu</th>
+              <!-- <th>Email</th> -->
+              <th>Pesan</th>
+              <!-- <th>Tanggal</th> -->
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tabel-body"></tbody>
+        </table>
+        <p id="empty-msg" class="empty-msg" hidden>Belum ada tamu. Jadilah yang pertama mengisi!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="tahun"></span> Buku Tamu Digital | Hak Cipta Dilindungi.</p>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

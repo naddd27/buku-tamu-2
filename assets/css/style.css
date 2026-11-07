@@ -1,0 +1,276 @@
+:root {
+  --warna-primer: #ffdaf1;
+  --warna-primer-gelap: #f46de0;
+  --warna-bg: #f4f6f9;
+  --warna-kartu: #ffffff;
+  --warna-teks: #2b2b2b;
+  --warna-sukses: #d841ad;
+  --warna-error: #c62828;
+  --radius: 5px;
+}
+
+/* ---------- Reset & Base ---------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--warna-bg);
+  color: var(--warna-teks);
+  line-height: 1.5;
+}
+
+/* ---------- Layout ---------- */
+
+.header {
+  background: var(--warna-primer);
+  color: var(--warna-teks);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+/* minmax(0, ...) -- bukan cuma 1fr/1.5fr -- supaya kolom boleh menyusut
+   di bawah lebar kontennya sendiri (dibutuhkan agar #tabel-wrapper bisa scroll). */
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    align-items: start;
+    justify-content: center;
+  }
+}
+
+.form-section,
+.list-section {
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.list-section {
+  max-width: 100%;
+  overflow: hidden;  /* cegah bayangan/konten bocor keluar kartu */
+}
+
+.form-section h2,
+.list-section h2 {
+  margin-bottom: 1rem;
+  color: var(--warna-primer-gelap);
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* ---------- Form ---------- */
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font: inherit;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--warna-primer);
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Tombol ---------- */
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  font: inherit;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+#btn-submit {
+  background: var(--warna-primer-gelap);
+  color: #fff;
+}
+
+#btn-submit:hover {
+  background: var(--warna-primer);
+  color: var(--warna-teks);
+}
+
+#btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #cfcfcf;
+}
+
+.btn-edit,
+.btn-hapus {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.btn-edit {
+  background: var(--warna-primer);
+  color: var(--warna-teks);
+}
+
+.btn-edit:hover {
+  background: var(--warna-primer-gelap);
+  color: #fff;
+}
+
+.btn-hapus {
+  background: var(--warna-error);
+}
+
+.btn-hapus:hover {
+  background: #df3f3f;
+}
+
+/* ---------- Pesan Status ---------- */
+
+.status-msg {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.status-sukses {
+  color: var(--warna-sukses);
+}
+
+.status-error {
+  color: var(--warna-error);
+}
+
+/* ---------- Tabel Daftar Tamu ---------- */
+
+#tabel-wrapper {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scroll lebih halus di iOS */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--warna-primer-gelap);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+td {
+  min-width: 0;
+  word-break: break-word; /* pecah teks panjang jika perlu */
+}
+
+/* Sel yang berisi judul + info tambahan, mis. nama + email dalam satu kolom */
+td h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+td small {
+  display: block;
+  color: #7f8c8d;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+td br {
+  display: none; /* spasi diatur lewat line-height h3/small, <br> manual tidak perlu */
+}
+
+.aksi-cell {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #888;
+  padding: 1.5rem 0;
+}
+
+/* Layar sempit: batasi tinggi tabel + paksa scroll horizontal+vertikal
+   dengan lebar minimum, daripada membiarkan kolom menciut berantakan. */
+@media (max-width: 767px) {
+  #tabel-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+  }
+
+  #tabel-wrapper table {
+    min-width: 600px;
+  }
+}
